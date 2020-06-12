@@ -12,6 +12,16 @@ class AutoInsuranceAction():
         self.warning_letter_enum = warning_letter_enum
         self.is_policy_canceled = is_policy_canceled
         self.is_error = is_error
+    
+    def __eq__(self, other):
+        if (type(other) == type(self)):
+            return (self.premium_increase == other.premium_increase 
+                    and self.warning_letter_enum == other.warning_letter_enum
+                    and self.is_policy_canceled == other.is_policy_canceled
+                    and self.is_error == other.is_error)
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
 
 def process(claims, age):
     if claims == 0 and age >= 16 and age <=25:

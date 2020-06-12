@@ -58,10 +58,16 @@ cases = [
     (-1, 80, -1, WarningLetterEnum.NONE, False, True),
 ]
 @pytest.mark.parametrize("data", cases)
-def test_thing(data):
+def test_processor_tests(data):
     result = process(data[0], data[1])
     expected = AutoInsuranceAction(data[2], data[3], data[4], data[5])
-    assert(expected.premium_increase == result.premium_increase)
-    assert(expected.warning_letter_enum == result.warning_letter_enum)
-    assert(expected.is_policy_canceled == result.is_policy_canceled)
-    assert(expected.is_error == result.is_error)
+    # assert(expected.premium_increase == result.premium_increase)
+    # assert(expected.warning_letter_enum == result.warning_letter_enum)
+    # assert(expected.is_policy_canceled == result.is_policy_canceled)
+    # assert(expected.is_error == result.is_error)
+    assert(expected == result)
+
+def test_should_error_above_85_years():
+    actual = process(0, 90)
+    expected = AutoInsuranceAction(-1, WarningLetterEnum.NONE, False, True)
+    assert(expected == actual)
