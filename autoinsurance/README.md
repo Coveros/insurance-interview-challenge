@@ -9,7 +9,7 @@ Run `pipenv install`
 ```pipenv run python app.py```
 
 ## Run Tests
-```pipenv run pytest -q test.py```
+```pipenv run pytest```
 
 ## Assignment
 Assume a new business rule is added: 
