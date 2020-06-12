@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.Ignore;
 
 public class DesktopUiTests {
 
@@ -16,6 +17,7 @@ public class DesktopUiTests {
      * An initial test to make sure the basics work
      */
     @Test
+    @Ignore
     public void testShouldGetCorrectCalculationHappyPath() {
         DesktopTester dt = new DesktopTester(new AutoInsuranceScriptClient());
         dt.setAge(22);
