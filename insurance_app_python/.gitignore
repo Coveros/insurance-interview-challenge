@@ -1,3 +1,6 @@
 *.pyc
 Pipfile.lock
 .vscode/*
+.idea/*
+venv
+/venv/

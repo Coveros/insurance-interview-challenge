@@ -4,7 +4,6 @@ class WarningLetterEnum(Enum):
     LTR1 = 'LTR1'
     LTR2 = 'LTR2'
     LTR3 = 'LTR3'
-    LTR4 = 'LTR4'
 
 class AutoInsuranceAction():
     def __init__(self, premium_increase : int, warning_letter_enum : WarningLetterEnum, is_policy_canceled : bool, is_error : bool):
