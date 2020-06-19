@@ -59,9 +59,39 @@ cases = [
 ]
 @pytest.mark.parametrize("data", cases)
 def test_processor_tests(data):
-    result = data[0]
+    """
+    Test all cases using parameterized tests.
+    Since so much logic is repeated, we can just iterate over a list of actual and
+    expected values and process them, avoiding much repitition
+    """
+    actual = data[0]
     expected = data[1]
-    assert(expected == result)
+    assert(expected == actual)
+
+def test_should_error_under_15():
+    actual = process(0, 15)
+    expected = AutoInsuranceAction(-1, WarningLetterEnum.NONE, False, True)
+    assert(expected == actual)
+
+def test_should_increase_with_no_letter_at_16():
+    actual = process(0, 16)
+    expected = AutoInsuranceAction(50, WarningLetterEnum.NONE, False, False)
+    assert(expected == actual)
+
+def test_should_increase_with_no_letter_at_25():
+    actual = process(0, 25)
+    expected = AutoInsuranceAction(50, WarningLetterEnum.NONE, False, False)
+    assert(expected == actual)
+
+def test_should_increase_with_no_letter_at_26():
+    actual = process(0, 26)
+    expected = AutoInsuranceAction(25, WarningLetterEnum.NONE, False, False)
+    assert(expected == actual)
+
+def test_should_increase_with_letter1_at_16_and_1_claim():
+    actual = process(1, 16)
+    expected = AutoInsuranceAction(100, WarningLetterEnum.LTR1, False, False)
+    assert(expected == actual)
 
 def test_should_error_above_85_years():
     actual = process(0, 90)
