@@ -9,7 +9,7 @@ def crunch(key):
     with the results of the age and claims input'''
     claims = claims_var.get()
 
-    # Don't update 
+    # Don't update when there is no input for age yet
     if (age_entry.get()) != "":
         print(f"DEBUG: {age_entry.get()}")
         if claims == 0 or claims == 1:
