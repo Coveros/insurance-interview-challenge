@@ -4,20 +4,24 @@ from tkinter import StringVar as StringVar
 
 from process import *
 
-def crunch():
+def crunch(key):
     '''Executed when 'crunch!' button is clicked. Updates default output/instructions
     with the results of the age and claims input'''
     claims = claims_var.get()
-    if claims == 0 or claims == 1:
-        claims = int(claims)
-    elif claims == "2-4":
-        claims = 3
-    elif claims == ">=5":
-        claims = 6
-    result = process(int(claims), int(age_entry.get()))
-    result_text = "Premium increase: ${} Warning Ltr: {} is canceled: {}".format(result.premium_increase, result.warning_letter_enum, result.is_policy_canceled)
-    print(result_text)
-    output_var.set(result_text)
+
+    # Don't update 
+    if (age_entry.get()) != "":
+        print(f"DEBUG: {age_entry.get()}")
+        if claims == 0 or claims == 1:
+            claims = int(claims)
+        elif claims == "2-4":
+            claims = 3
+        elif claims == ">=5":
+            claims = 6
+        result = process(int(claims), int(age_entry.get()))
+        result_text = "Premium increase: ${} Warning Ltr: {} is canceled: {}".format(result.premium_increase, result.warning_letter_enum, result.is_policy_canceled)
+        print(result_text)
+        output_var.set(result_text)
 
 window = tk.Tk()
 
@@ -51,4 +55,7 @@ button.pack()
 output = tk.Label(window, textvariable=output_var)
 output.pack()
 
+# Refresh results every keypress and button click
+window.bind("<Key>", crunch)
+window.bind("<Button-1>", crunch)
 window.mainloop()
