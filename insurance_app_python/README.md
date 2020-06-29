@@ -5,6 +5,10 @@
 * [pipenv](https://pipenv.kennethreitz.org/en/latest/install/#installing-pipenv)
 Run `pipenv install`
 
+If you see the following:
+```Courtesy Notice: Pipenv found itself running within a virtual environment, so it will automatically use that environment, instead of creating its own for any project. You can set PIPENV_IGNORE_VIRTUALENVS=1 to force pipenv to ignore that environment and create its own instead. You can set PIPENV_VERBOSITY=-1 to suppress this warning.```
+Head the warning, and set `PIPENV_IGNORE_VIRTUALENVS=1`
+
 ## Run Application
 ```pipenv run python app.py```
 
@@ -24,3 +28,6 @@ Client's above 85 should see
 - a $0 premium increase, no warning letter, and policy cancellation at 5+ claims
 
 Do this by first adding new, failing unit tests for these conditions, then adjusting the application to make them pass
+
+## Assignment 2
+Make some improvements to the application. Is there really any point in having to hit 'crunch'?
